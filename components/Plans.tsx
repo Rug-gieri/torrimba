@@ -4,6 +4,7 @@ const plans = [
   {
     name: "Ilimitado",
     price: "R$ 99,90",
+    originalPrice: "R$ 142,71",
     description: "Corte ou barba quando quiser, todo mês.",
     features: [
       "Corte ou barba ilimitados",
@@ -14,6 +15,7 @@ const plans = [
   {
     name: "Premium Ilimitado",
     price: "R$ 179,90",
+    originalPrice: "R$ 257,00",
     description: "O pacote completo, sem limites.",
     features: [
       "Corte e barba ilimitados",
@@ -24,6 +26,7 @@ const plans = [
   {
     name: "Básico",
     price: "R$ 79,90",
+    originalPrice: "R$ 114,14",
     description: "Para uma rotina simples e garantida.",
     features: [
       "2 cortes ou 4 barbas por mês",
@@ -64,13 +67,19 @@ export default function Plans() {
                   Mais escolhido
                 </span>
               )}
+              <span className="absolute right-6 top-6 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-widest text-background">
+                30% OFF
+              </span>
               <h3 className="font-display text-2xl font-medium text-foreground">
                 {plan.name}
               </h3>
               <p className="mt-2 text-sm leading-6 text-foreground-muted">
                 {plan.description}
               </p>
-              <p className="mt-6 font-display text-4xl font-medium text-foreground">
+              <p className="mt-6 text-sm text-foreground-subtle line-through">
+                {plan.originalPrice}
+              </p>
+              <p className="mt-1 font-display text-4xl font-medium text-foreground">
                 {plan.price}
                 <span className="ml-1 text-base font-normal text-foreground-muted">
                   /mês
