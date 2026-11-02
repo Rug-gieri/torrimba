@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ClipperSlider from "./ClipperSlider";
 
 export default function Hero() {
   return (
@@ -62,39 +63,9 @@ export default function Hero() {
             Elevamos sua imagem pessoal ao mais alto padrão.
           </p>
 
-          {/* Botões de Ação com Personalidade (Switch / Máquina de Corte) */}
-          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center gap-4">
-            {/* Botão Switch Clipper: Estilo interruptor tátil de máquina clássica (Wahl/Babyliss) */}
-            <a
-              href="#agendar"
-              className="group relative flex h-14 w-full sm:w-auto min-w-[240px] items-center justify-between rounded-full border border-white/30 bg-gradient-to-b from-neutral-800 to-black p-1.5 pl-5 pr-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.8),inset_0_1px_1px_rgba(255,255,255,0.25)] transition-all hover:border-white/60 hover:shadow-[0_12px_35px_rgba(255,255,255,0.1)] active:scale-[0.98]"
-            >
-              {/* Rótulo de Ação */}
-              <div className="flex flex-col items-start pr-3">
-                <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400 group-hover:text-neutral-300">
-                  LIGAR MÁQUINA
-                </span>
-                <span className="text-sm font-semibold tracking-wide text-white">
-                  Alinhar o visual
-                </span>
-              </div>
-
-              {/* Botão Switch Físico de Metal com Indicador LED */}
-              <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-neutral-100 to-neutral-300 text-black shadow-[inset_0_2px_4px_rgba(255,255,255,0.8),0_4px_8px_rgba(0,0,0,0.5)] transition-transform duration-300 group-hover:scale-105">
-                {/* Ícone Power Switch tátil */}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                  className="h-5 w-5 text-neutral-900 transition-transform duration-300 group-hover:rotate-12"
-                >
-                  <path d="M12 2v6" />
-                  <path d="M18.36 6.64a9 9 0 1 1-12.73 0" />
-                </svg>
-              </div>
-            </a>
+          {/* Botão de Slide Tátil estilo Chave da Máquina de Corte */}
+          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center gap-5">
+            <ClipperSlider targetId="agendar" />
 
             {/* Secundário: Ver Experiência */}
             <a
