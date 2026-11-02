@@ -56,7 +56,7 @@ export default function ClipperSlider({
     if (!isDragging || isActivated || !trackRef.current) return;
 
     const trackHeight = trackRef.current.offsetHeight;
-    const thumbHeight = 36; // altura do switch compacto
+    const thumbHeight = 28; // altura da chave proporcional ao trilho de 68px
     const maxDistance = trackHeight - thumbHeight - 6; // limites do trilho
 
     // Arrastar para cima: startY - clientY é positivo
@@ -65,7 +65,7 @@ export default function ClipperSlider({
 
     setDragProgress(currentProgress);
 
-    if (currentProgress >= 0.88) {
+    if (currentProgress >= 0.85) {
       setIsDragging(false);
       triggerActivation();
     }
@@ -90,7 +90,7 @@ export default function ClipperSlider({
         </span>
       </div>
 
-      {/* Botão Switch Compacto no lado direito */}
+      {/* Botão Switch com trilho reduzido em 30% na altura (68px) */}
       <div className="relative flex flex-col items-center">
         {/* Marcador ON no topo */}
         <div className="flex items-center gap-1 mb-1">
@@ -106,18 +106,17 @@ export default function ClipperSlider({
           </span>
         </div>
 
-        {/* Trilho Vertical Usinado Compacto (reduzido de h-36/w-14 para h-24/w-11) */}
+        {/* Trilho Vertical: altura reduzida em 30% (de 96px para 68px), largura mantida em 44px (w-11) */}
         <div
           ref={trackRef}
-          className={`relative flex h-24 w-11 flex-col justify-end items-center rounded-xl border p-[3px] transition-all duration-300 overflow-hidden ${
+          className={`relative flex h-[68px] w-11 flex-col justify-end items-center rounded-xl border p-[3px] transition-all duration-300 overflow-hidden ${
             isActivated
               ? "border-neutral-500 bg-neutral-900/90 shadow-[0_0_20px_rgba(255,255,255,0.15)]"
               : "border-neutral-800 bg-[#0c0d0e] shadow-[inset_0_2px_6px_rgba(0,0,0,0.9),0_6px_16px_rgba(0,0,0,0.8)] backdrop-blur-md"
           }`}
         >
           {/* Fendas verticais no fundo do trilho */}
-          <div className="pointer-events-none absolute inset-y-2.5 flex flex-col justify-between opacity-30">
-            <span className="w-3 h-[1.5px] bg-neutral-500 rounded-full" />
+          <div className="pointer-events-none absolute inset-y-2 flex flex-col justify-between opacity-30">
             <span className="w-3 h-[1.5px] bg-neutral-500 rounded-full" />
             <span className="w-3 h-[1.5px] bg-neutral-500 rounded-full" />
             <span className="w-3 h-[1.5px] bg-neutral-500 rounded-full" />
@@ -128,20 +127,20 @@ export default function ClipperSlider({
             className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-neutral-400/40 transition-opacity duration-200"
             style={{ opacity: isActivated ? 0 : Math.max(1 - dragProgress * 2, 0) }}
           >
-            <span className="text-[10px] font-mono animate-bounce">▲</span>
+            <span className="text-[9px] font-mono animate-bounce">▲</span>
           </div>
 
-          {/* Switch / Alavanca Física Compacta */}
+          {/* Switch / Alavanca Física */}
           <div
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
-            className="relative z-10 flex h-9 w-full cursor-grab active:cursor-grabbing items-center justify-center rounded-lg border border-neutral-600/40 bg-gradient-to-b from-neutral-600 via-neutral-700 to-neutral-800 shadow-[0_3px_8px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.25)] touch-none"
+            className="relative z-10 flex h-7 w-full cursor-grab active:cursor-grabbing items-center justify-center rounded-lg border border-neutral-600/40 bg-gradient-to-b from-neutral-600 via-neutral-700 to-neutral-800 shadow-[0_3px_8px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.25)] touch-none"
             style={{
               transform: `translateY(-${
                 dragProgress *
-                ((trackRef.current?.offsetHeight || 96) - 36 - 6)
+                ((trackRef.current?.offsetHeight || 68) - 28 - 6)
               }px)`,
               transition: isDragging
                 ? "none"
@@ -150,7 +149,6 @@ export default function ClipperSlider({
           >
             {/* Ranhuras usinadas em cinza escuro */}
             <div className="flex flex-col gap-[2px] items-center pointer-events-none">
-              <span className="w-4 h-[1.5px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
               <span className="w-4 h-[1.5px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
               <span className="w-4 h-[1.5px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
             </div>
