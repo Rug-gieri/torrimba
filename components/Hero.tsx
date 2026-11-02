@@ -1,19 +1,51 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import ClipperSlider from "./ClipperSlider";
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Performance: Pausar decodificação do vídeo na GPU assim que sair do viewport
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16 bg-black">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16 bg-black will-change-transform"
+    >
       {/* Background Cinematográfico */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Vídeo de Atendimento em loop silencioso */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Vídeo de Atendimento em loop silencioso otimizado */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           poster="/reels/videotex.jpg"
-          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85"
+          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85 transform-gpu"
         >
           <source src="/reels/videotex.mp4" type="video/mp4" />
         </video>
@@ -36,7 +68,7 @@ export default function Hero() {
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-20 sm:pt-0">
           
           {/* Badge Minimalista Apple Style */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-xl shadow-2xl">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-md shadow-2xl">
             <span className="flex h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
             <span className="text-xs font-medium tracking-wide text-white/90">
               5.0 no Google
@@ -70,7 +102,7 @@ export default function Hero() {
             {/* Secundário: Ver Experiência */}
             <a
               href="#reels"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-xs font-medium uppercase tracking-wider text-neutral-300 backdrop-blur-md transition-all hover:bg-white/10 hover:text-white hover:border-white/30 active:scale-[0.98]"
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-xs font-medium uppercase tracking-wider text-neutral-300 backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white hover:border-white/30 active:scale-[0.98]"
             >
               Ver na cadeira
             </a>

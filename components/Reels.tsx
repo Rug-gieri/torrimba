@@ -144,7 +144,7 @@ export default function Reels() {
                     muted
                     loop
                     playsInline
-                    preload="metadata"
+                    preload="none"
                     controlsList="nodownload noremoteplayback"
                     disablePictureInPicture
                     className="absolute inset-0 h-full w-full bg-black object-cover"
@@ -174,7 +174,7 @@ export default function Reels() {
                 muted
                 playsInline
                 onEnded={() => setActiveIndex((index) => (index + 1) % reels.length)}
-                preload="metadata"
+                preload="none"
                 controlsList="nodownload noremoteplayback"
                 disablePictureInPicture
                 className="absolute inset-0 h-full w-full bg-black object-cover"
