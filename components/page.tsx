@@ -14,8 +14,8 @@ export default function Home() {
       <Header />
       <Hero />
       <Reels />
-      <Transformations />
       <Services />
+      <Transformations />
       <Plans />
       <CTA />
       <Agendar />
