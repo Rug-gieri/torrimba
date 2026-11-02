@@ -82,15 +82,15 @@ export default function ClipperSlider({
     <div className="flex items-center gap-4 select-none">
       {/* Texto no lado esquerdo */}
       <div className="flex flex-col items-end text-right">
-        <span className="text-base font-semibold tracking-wide text-white">
+        <span className="text-base font-semibold tracking-wide text-neutral-100">
           {isActivated ? "Ligando..." : "Cortar agora"}
         </span>
-        <span className="text-[11px] text-white/50 font-light mt-0.5">
+        <span className="text-[11px] text-neutral-400 font-light mt-0.5">
           {isActivated ? "Indo para horários..." : "Deslize para cima"}
         </span>
       </div>
 
-      {/* Botão Switch no lado direito */}
+      {/* Botão Switch no lado direito - Visual Aço Escovado Escuro / Grafite Titânio */}
       <div className="relative flex flex-col items-center">
         {/* Marcador ON no topo */}
         <div className="flex items-center gap-1.5 mb-1.5">
@@ -98,47 +98,47 @@ export default function ClipperSlider({
             className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
               isActivated || dragProgress > 0.8
                 ? "bg-emerald-400 shadow-[0_0_8px_#34d399]"
-                : "bg-white/20"
+                : "bg-neutral-600"
             }`}
           />
-          <span className="text-[9px] font-mono tracking-widest text-white/50 uppercase">
+          <span className="text-[9px] font-mono tracking-widest text-neutral-400 uppercase">
             ON
           </span>
         </div>
 
-        {/* Trilho Vertical Usinado */}
+        {/* Trilho Vertical Usinado em Grafite Escuro */}
         <div
           ref={trackRef}
           className={`relative flex h-36 w-14 flex-col justify-end items-center rounded-2xl border p-1 transition-all duration-300 overflow-hidden ${
             isActivated
-              ? "border-white bg-white/10 shadow-[0_0_25px_rgba(255,255,255,0.25)]"
-              : "border-white/20 bg-neutral-950/90 shadow-[inset_0_3px_8px_rgba(0,0,0,0.9),0_10px_25px_rgba(0,0,0,0.6)] backdrop-blur-md"
+              ? "border-neutral-500 bg-neutral-900/90 shadow-[0_0_25px_rgba(255,255,255,0.15)]"
+              : "border-neutral-800 bg-[#0c0d0e] shadow-[inset_0_3px_8px_rgba(0,0,0,0.9),0_8px_20px_rgba(0,0,0,0.8)] backdrop-blur-md"
           }`}
         >
-          {/* Fendas verticais no fundo do trilho */}
-          <div className="pointer-events-none absolute inset-y-4 flex flex-col justify-between opacity-20">
-            <span className="w-4 h-[2px] bg-white rounded-full" />
-            <span className="w-4 h-[2px] bg-white rounded-full" />
-            <span className="w-4 h-[2px] bg-white rounded-full" />
-            <span className="w-4 h-[2px] bg-white rounded-full" />
-            <span className="w-4 h-[2px] bg-white rounded-full" />
+          {/* Fendas verticais cinza no fundo do trilho */}
+          <div className="pointer-events-none absolute inset-y-4 flex flex-col justify-between opacity-30">
+            <span className="w-4 h-[2px] bg-neutral-500 rounded-full" />
+            <span className="w-4 h-[2px] bg-neutral-500 rounded-full" />
+            <span className="w-4 h-[2px] bg-neutral-500 rounded-full" />
+            <span className="w-4 h-[2px] bg-neutral-500 rounded-full" />
+            <span className="w-4 h-[2px] bg-neutral-500 rounded-full" />
           </div>
 
-          {/* Setas animadas indicando "empurre para cima" */}
+          {/* Setas animadas cinza sutil indicando "empurre para cima" */}
           <div
-            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-white/30 transition-opacity duration-200"
+            className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center text-neutral-400/40 transition-opacity duration-200"
             style={{ opacity: isActivated ? 0 : Math.max(1 - dragProgress * 2, 0) }}
           >
             <span className="text-xs font-mono animate-bounce">▲</span>
           </div>
 
-          {/* Switch / Alavanca Física de Polegar */}
+          {/* Switch / Alavanca Física em Metal Grafite Escuro / Titânio Cinza */}
           <div
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerCancel={handlePointerUp}
-            className="relative z-10 flex h-11 w-full cursor-grab active:cursor-grabbing items-center justify-center rounded-xl bg-gradient-to-b from-neutral-200 via-neutral-300 to-neutral-400 shadow-[0_4px_10px_rgba(0,0,0,0.8),inset_0_1px_2px_rgba(255,255,255,0.9)] touch-none"
+            className="relative z-10 flex h-11 w-full cursor-grab active:cursor-grabbing items-center justify-center rounded-xl border border-neutral-600/40 bg-gradient-to-b from-neutral-600 via-neutral-700 to-neutral-800 shadow-[0_4px_10px_rgba(0,0,0,0.9),inset_0_1px_1px_rgba(255,255,255,0.25)] touch-none"
             style={{
               transform: `translateY(-${
                 dragProgress *
@@ -149,17 +149,17 @@ export default function ClipperSlider({
                 : "transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)",
             }}
           >
-            {/* Ranhuras horizontais para o polegar não escorregar */}
+            {/* Ranhuras usinadas em cinza escuro profundo */}
             <div className="flex flex-col gap-[3px] items-center pointer-events-none">
-              <span className="w-6 h-[2px] rounded-full bg-neutral-700/80 shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]" />
-              <span className="w-6 h-[2px] rounded-full bg-neutral-700/80 shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]" />
-              <span className="w-6 h-[2px] rounded-full bg-neutral-700/80 shadow-[inset_0_1px_1px_rgba(0,0,0,0.5)]" />
+              <span className="w-6 h-[2px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <span className="w-6 h-[2px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
+              <span className="w-6 h-[2px] rounded-full bg-neutral-900 shadow-[inset_0_1px_1px_rgba(0,0,0,0.8)]" />
             </div>
           </div>
         </div>
 
         {/* Marcador OFF na base */}
-        <span className="text-[9px] font-mono tracking-widest text-white/30 uppercase mt-1.5">
+        <span className="text-[9px] font-mono tracking-widest text-neutral-500 uppercase mt-1.5">
           OFF
         </span>
       </div>
