@@ -3,8 +3,6 @@ import { CheckIcon } from "./icons";
 const plans = [
   {
     name: "Ilimitado",
-    price: "R$ 99,90",
-    originalPrice: "R$ 142,71",
     description: "Corte ou barba quando quiser, todo mês.",
     features: [
       "Corte ou barba ilimitados",
@@ -14,8 +12,6 @@ const plans = [
   },
   {
     name: "Premium Ilimitado",
-    price: "R$ 179,90",
-    originalPrice: "R$ 257,00",
     description: "O pacote completo, sem limites.",
     features: [
       "Corte e barba ilimitados",
@@ -25,8 +21,6 @@ const plans = [
   },
   {
     name: "Básico",
-    price: "R$ 79,90",
-    originalPrice: "R$ 114,14",
     description: "Para uma rotina simples e garantida.",
     features: [
       "2 cortes ou 4 barbas por mês",
@@ -67,26 +61,32 @@ export default function Plans() {
                   Mais escolhido
                 </span>
               )}
-              <span className="absolute right-6 top-6 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-widest text-background">
-                30% OFF
-              </span>
-              <h3 className="font-display text-2xl font-medium text-foreground">
-                {plan.name}
-              </h3>
+              
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="font-display text-2xl font-medium text-foreground">
+                  {plan.name}
+                </h3>
+                <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-accent">
+                  Em breve
+                </span>
+              </div>
+
               <p className="mt-2 text-sm leading-6 text-foreground-muted">
                 {plan.description}
               </p>
-              <p className="mt-6 text-sm text-foreground-subtle line-through">
-                {plan.originalPrice}
-              </p>
-              <p className="mt-1 font-display text-4xl font-medium text-foreground">
-                {plan.price}
-                <span className="ml-1 text-base font-normal text-foreground-muted">
-                  /mês
-                </span>
-              </p>
-              <div className="my-6 h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
-              <ul className="flex flex-col gap-3">
+
+              <div className="my-6 rounded-xl border border-border/80 bg-background/50 p-4 text-center">
+                <p className="text-xs font-medium uppercase tracking-widest text-accent">
+                  Lançamento exclusivo
+                </p>
+                <p className="mt-1 text-sm text-foreground-muted">
+                  Valores e inscrições liberados em breve
+                </p>
+              </div>
+
+              <div className="my-2 h-px bg-gradient-to-r from-transparent via-border-light to-transparent" />
+              
+              <ul className="flex flex-col gap-3 my-4">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3 text-sm text-foreground-muted">
                     <CheckIcon />
@@ -94,15 +94,16 @@ export default function Plans() {
                   </li>
                 ))}
               </ul>
+
               <a
                 href="#agendar"
-                className={`mt-8 inline-flex h-11 items-center justify-center rounded-full text-sm font-medium transition-colors ${
+                className={`mt-auto inline-flex h-11 items-center justify-center rounded-full text-sm font-medium transition-colors ${
                   plan.featured
                     ? "bg-accent text-background hover:bg-accent-hover"
                     : "border border-border-light text-foreground hover:border-accent/60 hover:text-accent"
                 }`}
               >
-                Assinar agora
+                Tenho interesse
               </a>
             </div>
           ))}
