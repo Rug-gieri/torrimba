@@ -23,31 +23,60 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="visagismo" className="scroll-mt-24 border-t border-border py-24 sm:py-32">
+    <section id="visagismo" className="scroll-mt-24 border-t border-border py-20 sm:py-32">
       <div className="mx-auto max-w-6xl px-6">
-        <p className="text-xs font-medium uppercase tracking-[0.4em] text-accent">
-          Visagismo
+        <p className="text-xs font-mono uppercase tracking-[0.35em] text-neutral-400">
+          Serviços & Visagismo
         </p>
-        <h2 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+        <h2 className="mt-4 max-w-2xl font-sans text-3xl sm:text-5xl font-medium tracking-tight text-white leading-tight">
           Tradição e precisão em cada detalhe
         </h2>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+
+        {/* View Mobile: Compacto em Linhas (Row List) sem cards volumosos */}
+        <div className="mt-10 divide-y divide-border/60 md:hidden">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.title}
-                className="group rounded-2xl border border-border bg-surface p-8 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.7)] transition-colors hover:border-border-light"
+                className="flex items-start gap-4 py-5 first:pt-0 last:pb-0"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-border bg-surface-elevated text-metal transition-colors group-hover:text-accent">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-neutral-900 text-white">
+                  <div className="h-5 w-5">
+                    <Icon />
+                  </div>
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-sans text-base font-semibold text-white">
+                    {service.title}
+                  </h3>
+                  <p className="mt-1 text-xs leading-relaxed text-neutral-400 font-light">
+                    {service.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* View Desktop: Mantém os 3 cards espaçosos em Grid */}
+        <div className="mt-14 hidden md:grid md:grid-cols-3 gap-6">
+          {services.map((service) => {
+            const Icon = service.icon;
+            return (
+              <div
+                key={service.title}
+                className="group rounded-3xl border border-white/10 bg-neutral-900/60 p-8 shadow-2xl transition-all hover:border-white/20 hover:bg-neutral-900"
+              >
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-neutral-800 text-white transition-colors group-hover:border-white/30">
                   <div className="h-7 w-7">
                     <Icon />
                   </div>
                 </div>
-                <h3 className="mt-6 font-display text-2xl font-medium text-foreground">
+                <h3 className="mt-6 font-sans text-2xl font-medium text-white">
                   {service.title}
                 </h3>
-                <p className="mt-3 leading-7 text-foreground-muted">
+                <p className="mt-3 leading-7 text-neutral-400 font-light text-sm sm:text-base">
                   {service.description}
                 </p>
               </div>

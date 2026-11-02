@@ -20,6 +20,13 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Barbearia do Torres — Seu ambiente de renovação",
   description: "Estética para homens. Visagismo | Elegância | Sofisticação.",
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
