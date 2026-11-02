@@ -2,26 +2,33 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[92dvh] sm:min-h-screen items-center overflow-hidden pt-24 pb-12 sm:pb-16">
-      {/* Background Cinematográfico - Imagem com gradiente refinado */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/torres_header.png"
-          alt="Ambiente Barbearia do Torres"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-[center_20%] lg:hidden"
-        />
-        {/* Gradiente sutil e equilibrado: escurece a base e o topo garantindo leitura nítida sem sensação de 'abafado' */}
+    <section className="relative flex min-h-[95dvh] sm:min-h-screen items-center justify-center overflow-hidden pt-24 pb-14 sm:pb-16">
+      {/* Background Cinematográfico - Vídeo de atendimento em loop no Mobile */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        {/* Vídeo de Atendimento em Ação (Mobile) */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/reels/videotex.jpg"
+          className="absolute inset-0 h-full w-full object-cover object-center lg:hidden opacity-40 scale-105"
+        >
+          <source src="/reels/videotex.mp4" type="video/mp4" />
+        </video>
+
+        {/* Imagem de Fallback / Desktop */}
+        <div className="hidden lg:block absolute inset-0">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.12),transparent_65%)]"
+          />
+        </div>
+
+        {/* Gradiente escuro para garantir legibilidade de alto padrão no mobile */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-background lg:hidden"
-        />
-        {/* Glow Radial para Desktop */}
-        <div
-          aria-hidden
-          className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.12),transparent_65%)]"
+          className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background lg:hidden"
         />
       </div>
 
@@ -29,8 +36,8 @@ export default function Hero() {
         {/* Conteúdo de Texto e Ações */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           
-          {/* Tag de boas-vindas com Estrelas perfeitamente alinhadas */}
-          <div className="flex flex-wrap items-center justify-center gap-2 rounded-full border border-border/80 bg-surface-elevated/70 px-4 py-1.5 backdrop-blur-md">
+          {/* Tag com Estrelas Perfeitamente Alinhadas */}
+          <div className="flex items-center gap-2 rounded-full border border-border/80 bg-surface-elevated/70 px-4 py-1.5 backdrop-blur-md shadow-sm">
             <div className="flex items-center gap-0.5 text-accent text-xs">
               <span>★</span>
               <span>★</span>
@@ -79,7 +86,7 @@ export default function Hero() {
             </a>
           </div>
 
-          {/* Destaques Rápidos com Ícones / Texto */}
+          {/* Destaques Rápidos com Ícones / Métricas */}
           <div className="mt-8 pt-6 border-t border-border/50 grid grid-cols-3 gap-3 w-full max-w-sm text-center">
             <div>
               <p className="text-sm font-bold text-accent">1 a 1</p>
