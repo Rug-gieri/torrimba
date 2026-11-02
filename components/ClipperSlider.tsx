@@ -80,9 +80,18 @@ export default function ClipperSlider({
 
   return (
     <div className="flex items-center gap-4 select-none">
-      {/* Corpo da Chave Vertical da Máquina (ON / OFF lateral) */}
+      {/* Texto no lado esquerdo */}
+      <div className="flex flex-col items-end text-right">
+        <span className="text-base font-semibold tracking-wide text-white">
+          {isActivated ? "Ligando..." : "Cortar agora"}
+        </span>
+        <span className="text-[11px] text-white/50 font-light mt-0.5">
+          {isActivated ? "Indo para horários..." : "Deslize para cima"}
+        </span>
+      </div>
+
+      {/* Botão Switch no lado direito */}
       <div className="relative flex flex-col items-center">
-        
         {/* Marcador ON no topo */}
         <div className="flex items-center gap-1.5 mb-1.5">
           <span
@@ -123,7 +132,7 @@ export default function ClipperSlider({
             <span className="text-xs font-mono animate-bounce">▲</span>
           </div>
 
-          {/* Switch / Alavanca Física de Polegar (arrasta de baixo para cima) */}
+          {/* Switch / Alavanca Física de Polegar */}
           <div
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -152,19 +161,6 @@ export default function ClipperSlider({
         {/* Marcador OFF na base */}
         <span className="text-[9px] font-mono tracking-widest text-white/30 uppercase mt-1.5">
           OFF
-        </span>
-      </div>
-
-      {/* Rótulo e Instrução ao lado da chave */}
-      <div className="flex flex-col items-start text-left">
-        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40">
-          CHAVE DA MÁQUINA
-        </span>
-        <span className="text-sm font-semibold tracking-wide text-white">
-          {isActivated ? "Ligada! Agendando..." : "Empurre para ligar"}
-        </span>
-        <span className="text-[11px] text-white/50 font-light mt-0.5">
-          {isActivated ? "Indo para horários..." : "Alinhar corte & barba"}
         </span>
       </div>
     </div>
