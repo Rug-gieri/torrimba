@@ -8,7 +8,7 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Performance: Pausar decodificação do vídeo na GPU assim que sair do viewport
+  // Pausar o vídeo quando não estiver visível para poupar GPU
   useEffect(() => {
     const video = videoRef.current;
     const section = sectionRef.current;
@@ -32,11 +32,11 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16 bg-black will-change-transform"
+      className="relative flex min-h-[100dvh] items-end lg:items-center justify-center pt-28 pb-10 sm:pb-16 bg-black"
     >
       {/* Background Cinematográfico */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Vídeo de Atendimento em loop silencioso otimizado */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {/* Vídeo de Atendimento em loop silencioso */}
         <video
           ref={videoRef}
           autoPlay
@@ -45,7 +45,7 @@ export default function Hero() {
           playsInline
           preload="auto"
           poster="/reels/videotex.jpg"
-          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85 transform-gpu"
+          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85"
         >
           <source src="/reels/videotex.mp4" type="video/mp4" />
         </video>

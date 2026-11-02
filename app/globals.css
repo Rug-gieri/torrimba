@@ -39,20 +39,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Otimização de Performance para Scroll Suave no Mobile */
-section {
-  contain: layout style;
-}
-
-/* Aceleração por GPU para seções pesadas abaixo da dobra */
-#transformacoes,
-#clube,
-#agendar,
-#contato {
-  content-visibility: auto;
-  contain-intrinsic-size: 800px;
-}
-
 ::selection {
   background: #ffffff;
   color: #000000;
