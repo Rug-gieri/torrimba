@@ -8,7 +8,6 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Pausar o vídeo quando não estiver visível para poupar GPU
   useEffect(() => {
     const video = videoRef.current;
     const section = sectionRef.current;
@@ -32,11 +31,11 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[100dvh] items-end lg:items-center justify-center pt-28 pb-10 sm:pb-16 bg-black"
+      className="relative flex h-screen items-end lg:items-center justify-center pt-28 pb-10 sm:pb-16 bg-black"
     >
-      {/* Background Cinematográfico */}
+      {/* Background Cinematográfico Fixo */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Vídeo de Atendimento em loop silencioso */}
+        {/* Vídeo com dimensões estáticas sem layout shifting */}
         <video
           ref={videoRef}
           autoPlay
@@ -50,13 +49,13 @@ export default function Hero() {
           <source src="/reels/videotex.mp4" type="video/mp4" />
         </video>
 
-        {/* Gradiente de Alto Padrão: preto puro na base e topo translúcido */}
+        {/* Gradiente */}
         <div
           aria-hidden
           className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent lg:hidden"
         />
 
-        {/* Desktop glow neutro/monocromático */}
+        {/* Desktop glow */}
         <div
           aria-hidden
           className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_65%)]"
@@ -67,9 +66,9 @@ export default function Hero() {
         {/* Conteúdo de Texto e Ações */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-20 sm:pt-0">
           
-          {/* Badge Minimalista Apple Style */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-md shadow-2xl">
-            <span className="flex h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+          {/* Badge Minimalista */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 shadow-2xl">
+            <span className="flex h-1.5 w-1.5 rounded-full bg-white" />
             <span className="text-xs font-medium tracking-wide text-white/90">
               5.0 no Google
             </span>
@@ -95,14 +94,14 @@ export default function Hero() {
             Elevamos sua imagem pessoal ao mais alto padrão.
           </p>
 
-          {/* Botão de Slide Tátil estilo Chave da Máquina de Corte */}
+          {/* Botão de Slide Tátil */}
           <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center gap-5">
             <ClipperSlider targetId="agendar" />
 
-            {/* Secundário: Ver Experiência */}
+            {/* Secundário */}
             <a
               href="#reels"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-xs font-medium uppercase tracking-wider text-neutral-300 backdrop-blur-sm transition-all hover:bg-white/10 hover:text-white hover:border-white/30 active:scale-[0.98]"
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-xs font-medium uppercase tracking-wider text-neutral-300 transition-colors hover:bg-white/10 hover:text-white hover:border-white/30"
             >
               Ver na cadeira
             </a>
