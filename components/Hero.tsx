@@ -2,85 +2,85 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16">
+    <section className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16 bg-black">
       {/* Background Cinematográfico */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Vídeo visível em telas menores que lg - mais limpo na metade superior */}
+        {/* Vídeo de Atendimento em loop silencioso */}
         <video
           autoPlay
           muted
           loop
           playsInline
           poster="/reels/videotex.jpg"
-          className="absolute inset-0 h-full w-full object-cover object-[center_30%] lg:hidden opacity-75"
+          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85"
         >
           <source src="/reels/videotex.mp4" type="video/mp4" />
         </video>
 
-        {/* Gradiente refinado: topo aberto e limpo para mostrar a ação do corte/vapor, escurecendo apenas na base onde fica o texto */}
+        {/* Gradiente de Alto Padrão: preto puro na base e topo translúcido */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#08090a] via-[#08090a]/85 to-transparent lg:hidden"
+          className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent lg:hidden"
         />
 
-        {/* Desktop glow */}
+        {/* Desktop glow neutro/monocromático */}
         <div
           aria-hidden
-          className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.12),transparent_65%)]"
+          className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_65%)]"
         />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-6 w-full lg:grid-cols-2">
-        {/* Conteúdo de Texto e Ações posicionado na base no mobile para abrir o campo visual do vídeo */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-24 sm:pt-0">
+      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 w-full lg:grid-cols-2">
+        {/* Conteúdo de Texto e Ações Monocromático */}
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-20 sm:pt-0">
           
-          {/* Badge 5.0 Google */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-black/60 px-3.5 py-1 backdrop-blur-md">
-            <span className="text-accent text-xs tracking-tight font-bold">★★★★★</span>
-            <span className="text-xs font-semibold text-white">5.0</span>
+          {/* Badge Minimalista Apple Style */}
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-xl shadow-2xl">
+            <span className="flex h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+            <span className="text-xs font-medium tracking-wide text-white/90">
+              5.0 no Google
+            </span>
             <span className="h-3 w-px bg-white/20" />
-            <span className="text-[11px] text-gray-300">
-              Barbearia & Visagismo
+            <span className="text-[11px] tracking-wider text-white/60 uppercase">
+              Visagismo & Estética
             </span>
           </div>
 
-          {/* Subtítulo Dourado */}
-          <p className="mt-4 text-xs font-semibold uppercase tracking-[0.3em] text-accent">
-            Experiência & Sofisticação
+          {/* Subtítulo Clean */}
+          <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/50">
+            Estúdio de Visagismo Masculino
           </p>
 
-          {/* Título Principal */}
-          <h1 className="mt-2.5 font-display text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.18] text-foreground tracking-tight max-w-md lg:max-w-none">
-            Seu ambiente de{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent via-accent-hover to-accent-muted">
-              renovação & estilo.
-            </span>
+          {/* Título Principal com Tipografia Sans Moderna */}
+          <h1 className="mt-3 font-sans text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white max-w-md lg:max-w-none">
+            Seu ambiente de <br className="hidden sm:inline" />
+            <span className="text-white/60">renovação & estilo.</span>
           </h1>
 
-          <p className="mt-3 max-w-md text-xs sm:text-base leading-relaxed text-foreground-muted lg:text-lg">
-            Estética masculina personalizada em um espaço clássico. Da navalha ao
-            visagismo minucioso, elevamos sua imagem e confiança.
+          <p className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-white/70 font-light lg:text-lg">
+            Precisão, proporção facial e estética clássica em um ambiente exclusivo.
+            Elevamos sua imagem pessoal ao mais alto padrão.
           </p>
 
-          {/* Botões de Ação */}
-          <div className="mt-6 flex flex-col sm:flex-row w-full sm:w-auto gap-3">
+          {/* Botões de Ação Monocromáticos de Alto Padrão */}
+          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto gap-3.5">
             <a
               href="#agendar"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full bg-accent px-8 text-sm font-semibold tracking-wide text-background shadow-lg shadow-accent/20 transition-all hover:bg-accent-hover active:scale-[0.98]"
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full bg-white px-8 text-sm font-semibold tracking-wide text-black transition-all hover:bg-neutral-200 active:scale-[0.98] shadow-lg shadow-white/5"
             >
               Agendar Horário
             </a>
             <a
               href="#reels"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/20 bg-black/40 px-8 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-accent hover:text-accent active:scale-[0.98]"
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-8 text-sm font-medium text-white backdrop-blur-md transition-all hover:bg-white/10 hover:border-white/30 active:scale-[0.98]"
             >
-              Ver Experiência em Vídeo
+              Ver Experiência
             </a>
           </div>
         </div>
 
         {/* Lado Direito Desktop */}
-        <div className="relative hidden lg:block aspect-4/5 w-full max-w-md ml-auto rounded-2xl overflow-hidden border border-border/60 shadow-2xl shadow-black/80">
+        <div className="relative hidden lg:block aspect-4/5 w-full max-w-md ml-auto rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
           <Image
             src="/torres_header.png"
             alt="Interior da Barbearia do Torres"
@@ -91,7 +91,7 @@ export default function Hero() {
           />
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent"
+            className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
           />
         </div>
       </div>

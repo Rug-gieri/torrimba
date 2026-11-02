@@ -1,30 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #08090a;
-  --color-surface: #111315;
-  --color-surface-elevated: #181b1e;
-  --color-surface-hover: #22262a;
+  --color-background: #000000;
+  --color-surface: #0c0d0e;
+  --color-surface-elevated: #141618;
+  --color-surface-hover: #1e2023;
 
-  --color-foreground: #f2f2f0;
-  --color-foreground-muted: #a7aaac;
-  --color-foreground-subtle: #707477;
+  --color-foreground: #ffffff;
+  --color-foreground-muted: #9ba1a6;
+  --color-foreground-subtle: #636a70;
 
-  --color-metal-light: #e1e4e5;
-  --color-metal: #aeb3b5;
-  --color-metal-dark: #62686b;
-  --color-chrome: #d9ddde;
+  --color-metal-light: #f4f5f6;
+  --color-metal: #c2c7cc;
+  --color-metal-dark: #7e868c;
+  --color-chrome: #e6e8eb;
 
-  --color-accent: #c6a66b;
-  --color-accent-hover: #d8b979;
-  --color-accent-muted: #806b45;
+  /* Monocromático de Alto Padrão (Titanium & White) */
+  --color-accent: #ffffff;
+  --color-accent-hover: #e5e7eb;
+  --color-accent-muted: #374151;
 
-  --color-border: #292d30;
-  --color-border-light: #3a3f42;
+  --color-border: #1d2125;
+  --color-border-light: #2c3136;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-geist-sans);
 }
 
 html {
@@ -37,11 +38,11 @@ body {
 }
 
 ::selection {
-  background: var(--color-accent-muted);
-  color: var(--color-foreground);
+  background: #ffffff;
+  color: #000000;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid #ffffff;
   outline-offset: 2px;
 }
