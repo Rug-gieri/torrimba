@@ -62,9 +62,20 @@ export default function Footer() {
       </div>
       <div className="mx-auto mt-14 max-w-6xl px-6">
         <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-        <p className="mt-6 text-center text-xs text-foreground-muted">
-          © 2026 Barbearia do Torres. Todos os direitos reservados.
-        </p>
+        <div className="mt-6 flex flex-col items-center justify-between gap-4 text-xs text-foreground-muted sm:flex-row">
+          <p>© 2026 Barbearia do Torres. Todos os direitos reservados.</p>
+          <p>
+            Featured by{" "}
+            <a
+              href="https://gambit.tec.br"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-foreground transition-colors hover:text-accent underline underline-offset-4"
+            >
+              Gambit
+            </a>
+          </p>
+        </div>
       </div>
     </footer>
   );
