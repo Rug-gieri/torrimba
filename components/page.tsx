@@ -2,6 +2,7 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Services from "../components/Services";
 import Transformations from "../components/Transformations";
+import Ambience from "../components/Ambience";
 import Reels from "../components/Reels";
 import Plans from "../components/Plans";
 import CTA from "../components/CTA";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <Reels />
       <Services />
+      <Ambience />
       <Transformations />
       <Plans />
       <CTA />

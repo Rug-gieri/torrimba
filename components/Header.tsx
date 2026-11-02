@@ -25,31 +25,18 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
-          <a
-            href="#agendar"
-            className="hidden h-10 items-center justify-center rounded-full bg-accent px-6 text-sm font-medium text-background transition-colors hover:bg-accent-hover md:inline-flex"
-          >
-            Agendar horário
-          </a>
-          <details className="group relative md:hidden">
+        <div className="flex items-center gap-3 md:hidden">
+          <details className="group relative">
             <summary
               aria-label="Abrir menu"
-              className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-border text-foreground"
+              className="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-full border border-border bg-surface/50 shadow-sm"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                aria-hidden="true"
-                className="h-5 w-5"
-              >
-                <path d="M4 6h16" />
-                <path d="M4 12h16" />
-                <path d="M4 18h16" />
-              </svg>
+              {/* Hambúrguer estilizado no clássico Barber Pole (Vermelho, Branco, Azul) */}
+              <div className="flex flex-col gap-1.5 items-center justify-center w-5">
+                <span className="h-[2px] w-full rounded-full bg-[#ef4444] shadow-[0_0_6px_rgba(239,68,68,0.5)]" />
+                <span className="h-[2px] w-full rounded-full bg-[#ffffff] shadow-[0_0_6px_rgba(255,255,255,0.4)]" />
+                <span className="h-[2px] w-full rounded-full bg-[#3b82f6] shadow-[0_0_6px_rgba(59,130,246,0.5)]" />
+              </div>
             </summary>
             <div className="absolute right-0 top-12 w-64 rounded-2xl border border-border bg-surface p-4 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.7)]">
               <nav className="flex flex-col gap-4">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 import ClipperSlider from "./ClipperSlider";
 
 export default function Hero() {
@@ -31,43 +30,62 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex h-screen items-end lg:items-center justify-center pt-28 pb-10 sm:pb-16 bg-black"
+      className="relative flex h-screen items-end lg:items-center justify-center pt-28 pb-10 sm:pb-16 bg-black overflow-hidden"
     >
-      {/* Background Cinematográfico Fixo */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        {/* Vídeo com dimensões estáticas sem layout shifting */}
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster="/reels/videotex.jpg"
-          className="absolute inset-0 h-full w-full object-cover object-[center_25%] lg:hidden opacity-85"
-        >
-          <source src="/reels/videotex.mp4" type="video/mp4" />
-        </video>
+      {/* Background Cinematográfico - Vídeo posicionado no lado direito no Desktop */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        
+        {/* Contêiner do vídeo: no desktop ocupa os 55% da direita */}
+        <div className="absolute inset-0 lg:left-[45%] lg:right-0 overflow-hidden">
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/reels/videotex.jpg"
+            className="absolute inset-0 h-full w-full object-cover object-[center_35%] lg:object-cover lg:object-center opacity-70 lg:opacity-[0.30]"
+          >
+            <source src="/reels/videotex.mp4" type="video/mp4" />
+          </video>
 
-        {/* Gradiente */}
+          {/* Vinheta cinematográfica sobre o vídeo no desktop */}
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.2)_0%,rgba(0,0,0,0.65)_80%,rgba(0,0,0,0.95)_100%)]"
+          />
+
+          {/* Gradiente sutil à esquerda do vídeo para fusão suave com o fundo preto no desktop */}
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-y-0 left-0 w-44 bg-gradient-to-r from-black via-black/70 to-transparent"
+          />
+
+          {/* Gradiente superior e inferior para acabamento suave */}
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black to-transparent"
+          />
+          <div
+            aria-hidden
+            className="hidden lg:block absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black to-transparent"
+          />
+        </div>
+
+        {/* Gradiente exclusivo para Mobile (escurece de baixo para cima) */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent lg:hidden"
-        />
-
-        {/* Desktop glow */}
-        <div
-          aria-hidden
-          className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,255,255,0.06),transparent_65%)]"
+          className="absolute inset-0 bg-gradient-to-t from-black via-black/85 to-black/30 lg:hidden"
         />
       </div>
 
-      <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-12 px-6 w-full lg:grid-cols-2">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 w-full">
         {/* Conteúdo de Texto e Ações */}
-        <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-20 sm:pt-0">
+        <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-20 sm:pt-0 max-w-xl">
           
           {/* Badge Minimalista */}
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 shadow-2xl">
+          <div className="inline-flex items-center gap-2.5 rounded-full border border-white/15 bg-black/60 px-4 py-1.5 backdrop-blur-md shadow-2xl">
             <span className="flex h-1.5 w-1.5 rounded-full bg-white" />
             <span className="text-xs font-medium tracking-wide text-white/90">
               5.0 no Google
@@ -78,50 +96,25 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* Subtítulo Clean */}
-          <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/50">
-            Estúdio de Visagismo Masculino
+          {/* Subtítulo com Localização */}
+          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.35em] text-white/50">
+            Visagismo Masculino em Porto Velho
           </p>
 
           {/* Título Principal */}
-          <h1 className="mt-3 font-sans text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white max-w-md lg:max-w-none">
-            Seu ambiente de <br className="hidden sm:inline" />
+          <h1 className="mt-3 font-sans text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-white max-w-xl">
+            Seu ambiente de <br />
             <span className="text-white/60">renovação & estilo.</span>
           </h1>
 
-          <p className="mt-4 max-w-md text-sm sm:text-base leading-relaxed text-white/70 font-light lg:text-lg">
-            Precisão, proporção facial e estética clássica em um ambiente exclusivo.
-            Elevamos sua imagem pessoal ao mais alto padrão.
+          <p className="mt-5 max-w-lg text-sm sm:text-base leading-relaxed text-white/70 font-light lg:text-lg">
+            A tradição da navalha aliada à praticidade e à alta qualidade que o homem moderno exige. Cuidado sob medida para a sua rotina.
           </p>
 
-          {/* Botão de Slide Tátil */}
-          <div className="mt-8 flex flex-col sm:flex-row w-full sm:w-auto items-center gap-5">
+          {/* Botão de Slide Tátil Chave Seletora */}
+          <div className="mt-8 flex w-full sm:w-auto items-center justify-center lg:justify-start">
             <ClipperSlider targetId="agendar" />
-
-            {/* Secundário */}
-            <a
-              href="#reels"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/15 bg-white/[0.04] px-7 text-xs font-medium uppercase tracking-wider text-neutral-300 transition-colors hover:bg-white/10 hover:text-white hover:border-white/30"
-            >
-              Ver na cadeira
-            </a>
           </div>
-        </div>
-
-        {/* Lado Direito Desktop */}
-        <div className="relative hidden lg:block aspect-4/5 w-full max-w-md ml-auto rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_100px_rgba(0,0,0,0.9)]">
-          <Image
-            src="/torres_header.png"
-            alt="Interior da Barbearia do Torres"
-            fill
-            priority
-            sizes="50vw"
-            className="object-cover"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"
-          />
         </div>
       </div>
     </section>

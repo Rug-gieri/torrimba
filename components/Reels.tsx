@@ -4,12 +4,6 @@ import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 const reels = [
   {
-    label: "Corte clássico",
-    src: "/reels/videocorte.mp4",
-    poster: "/reels/videocorte.jpg",
-    phrase: "O clássico nunca sai de moda.",
-  },
-  {
     label: "Transformação",
     src: "/reels/videoguri.mp4",
     poster: "/reels/videoguri.jpg",
@@ -26,6 +20,12 @@ const reels = [
     src: "/reels/videovisa.mp4",
     poster: "/reels/videovisa.jpg",
     phrase: "Um corte que fala sobre você.",
+  },
+  {
+    label: "Corte clássico",
+    src: "/reels/videocorte.mp4",
+    poster: "/reels/videocorte.jpg",
+    phrase: "O clássico nunca sai de moda.",
   },
 ];
 
@@ -111,10 +111,7 @@ export default function Reels() {
         <div className="md:hidden">
           <div className="flex flex-col items-start justify-between gap-6">
             <div>
-              <p className="text-xs font-medium uppercase tracking-[0.4em] text-accent">
-                Reels
-              </p>
-              <h2 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+              <h2 className="max-w-2xl font-display text-4xl font-medium leading-tight text-foreground sm:text-5xl">
                 A barbearia em movimento
               </h2>
             </div>
@@ -165,16 +162,14 @@ export default function Reels() {
           <figure className="relative overflow-hidden rounded-2xl border border-border bg-surface shadow-[0_24px_50px_-24px_rgba(0,0,0,0.7)]">
             <div className="relative aspect-[9/16]">
               <video
-                key={activeIndex}
                 ref={desktopVideoRef}
                 src={reels[activeIndex].src}
                 poster={reels[activeIndex].poster}
                 controls
-                autoPlay
                 muted
                 playsInline
-                onEnded={() => setActiveIndex((index) => (index + 1) % reels.length)}
                 preload="none"
+                onEnded={() => setActiveIndex((index) => (index + 1) % reels.length)}
                 controlsList="nodownload noremoteplayback"
                 disablePictureInPicture
                 className="absolute inset-0 h-full w-full bg-black object-cover"
@@ -182,8 +177,8 @@ export default function Reels() {
             </div>
             <button
               type="button"
-              aria-label="Reel anterior"
               onClick={() => setActiveIndex((index) => (index - 1 + reels.length) % reels.length)}
+              aria-label="Vídeo anterior"
               className="absolute left-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/70 text-foreground backdrop-blur transition-colors hover:bg-surface-elevated hover:text-accent"
             >
               <svg
@@ -196,13 +191,13 @@ export default function Reels() {
                 aria-hidden="true"
                 className="h-5 w-5"
               >
-                <path d="M15 18l-6-6 6-6" />
+                <path d="m15 18-6-6 6-6" />
               </svg>
             </button>
             <button
               type="button"
-              aria-label="Próximo reel"
               onClick={() => setActiveIndex((index) => (index + 1) % reels.length)}
+              aria-label="Próximo vídeo"
               className="absolute right-3 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-background/70 text-foreground backdrop-blur transition-colors hover:bg-surface-elevated hover:text-accent"
             >
               <svg
@@ -215,41 +210,41 @@ export default function Reels() {
                 aria-hidden="true"
                 className="h-5 w-5"
               >
-                <path d="M9 18l6-6-6-6" />
+                <path d="m9 18 6-6-6-6" />
               </svg>
             </button>
           </figure>
+
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.4em] text-accent">
               Reels
             </p>
-            <h2 className="mt-4 max-w-2xl font-display text-4xl font-medium leading-tight text-foreground sm:text-5xl">
+            <h2 className="mt-4 font-display text-4xl font-medium leading-tight text-foreground sm:text-5xl">
               A barbearia em movimento
             </h2>
-            <div className="mt-10 border-l-2 border-accent/60 pl-6">
-              <h3 className="font-display text-2xl font-medium text-foreground">
+            <div className="mt-8 border-l border-border pl-6">
+              <p className="font-display text-2xl font-medium text-foreground">
                 {reels[activeIndex].label}
-              </h3>
-              <p className="mt-3 text-lg leading-7 text-foreground-muted">
+              </p>
+              <p className="mt-2 text-base leading-7 text-foreground-muted">
                 {reels[activeIndex].phrase}
               </p>
             </div>
-            <div className="mt-10 flex items-center gap-1">
+            <div className="mt-8 flex gap-2">
               {reels.map((reel, index) => (
                 <button
                   key={reel.label}
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  aria-label={`Ver ${reel.label}`}
-                  aria-current={activeIndex === index}
-                  className="group flex h-10 w-10 items-center justify-center"
+                  aria-label={`Ver vídeo ${reel.label}`}
+                  className="group flex h-8 items-center"
                 >
                   <span
-                    className={
-                      activeIndex === index
-                        ? "h-2 w-8 rounded-full bg-accent transition-all"
-                        : "h-2 w-2 rounded-full bg-border-light transition-all group-hover:bg-foreground-muted"
-                    }
+                    className={`block transition-all ${
+                      index === activeIndex
+                        ? "h-2 w-8 rounded-full bg-accent"
+                        : "h-2 w-2 rounded-full bg-border-light group-hover:bg-foreground-muted"
+                    }`}
                   />
                 </button>
               ))}
@@ -260,7 +255,7 @@ export default function Reels() {
               rel="noopener noreferrer"
               className="mt-8 inline-block text-sm text-foreground-muted transition-colors hover:text-accent"
             >
-              @barbeariadotorres
+              Ver mais no Instagram @barbeariadotorres →
             </a>
           </div>
         </div>
