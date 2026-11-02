@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-8 sm:pb-16">
+    <section className="relative flex min-h-[100dvh] items-end lg:items-center justify-center overflow-hidden pt-28 pb-10 sm:pb-16">
       {/* Background Cinematográfico */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         {/* Vídeo visível em telas menores que lg - mais limpo na metade superior */}
@@ -31,7 +31,7 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-6 w-full lg:grid-cols-2">
-        {/* Conteúdo de Texto e Ações posicionado mais abaixo no mobile para abrir o campo visual do vídeo */}
+        {/* Conteúdo de Texto e Ações posicionado na base no mobile para abrir o campo visual do vídeo */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left pt-24 sm:pt-0">
           
           {/* Badge 5.0 Google */}
@@ -76,22 +76,6 @@ export default function Hero() {
             >
               Ver Experiência em Vídeo
             </a>
-          </div>
-
-          {/* Destaques Rápidos */}
-          <div className="mt-6 pt-5 border-t border-white/10 grid grid-cols-3 gap-3 w-full max-w-sm text-center">
-            <div>
-              <p className="text-sm font-bold text-accent">1 a 1</p>
-              <p className="text-[11px] text-foreground-subtle">Exclusivo</p>
-            </div>
-            <div className="border-x border-white/10">
-              <p className="text-sm font-bold text-accent">Visagismo</p>
-              <p className="text-[11px] text-foreground-subtle">Consultoria Facial</p>
-            </div>
-            <div>
-              <p className="text-sm font-bold text-accent">Lounge</p>
-              <p className="text-[11px] text-foreground-subtle">Open Bar</p>
-            </div>
           </div>
         </div>
 
