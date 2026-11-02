@@ -2,33 +2,31 @@ import Image from "next/image";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-[95dvh] sm:min-h-screen items-center justify-center overflow-hidden pt-24 pb-14 sm:pb-16">
-      {/* Background Cinematográfico - Vídeo de atendimento em loop no Mobile */}
+    <section className="relative flex min-h-[92dvh] sm:min-h-screen items-center justify-center overflow-hidden pt-20 pb-12">
+      {/* Background Cinematográfico */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        {/* Vídeo de Atendimento em Ação (Mobile) */}
+        {/* Vídeo visível em telas menores que lg */}
         <video
           autoPlay
           muted
           loop
           playsInline
           poster="/reels/videotex.jpg"
-          className="absolute inset-0 h-full w-full object-cover object-center lg:hidden opacity-40 scale-105"
+          className="absolute inset-0 h-full w-full object-cover object-center lg:hidden opacity-50"
         >
           <source src="/reels/videotex.mp4" type="video/mp4" />
         </video>
 
-        {/* Imagem de Fallback / Desktop */}
-        <div className="hidden lg:block absolute inset-0">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.12),transparent_65%)]"
-          />
-        </div>
-
-        {/* Gradiente escuro para garantir legibilidade de alto padrão no mobile */}
+        {/* Gradiente refinado: escurece para o texto brilhar com alto contraste */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background lg:hidden"
+          className="absolute inset-0 bg-gradient-to-t from-[#08090a] via-[#08090a]/80 to-[#08090a]/50 lg:hidden"
+        />
+
+        {/* Desktop glow */}
+        <div
+          aria-hidden
+          className="pointer-events-none hidden lg:block absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(198,166,107,0.12),transparent_65%)]"
         />
       </div>
 
@@ -36,18 +34,12 @@ export default function Hero() {
         {/* Conteúdo de Texto e Ações */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
           
-          {/* Tag com Estrelas Perfeitamente Alinhadas */}
-          <div className="flex items-center gap-2 rounded-full border border-border/80 bg-surface-elevated/70 px-4 py-1.5 backdrop-blur-md shadow-sm">
-            <div className="flex items-center gap-0.5 text-accent text-xs">
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-              <span>★</span>
-            </div>
-            <span className="text-xs font-semibold text-foreground">5.0</span>
-            <span className="h-3 w-px bg-border" />
-            <span className="text-[11px] text-foreground-muted">
+          {/* Badge 5.0 Google */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-accent/40 bg-black/60 px-4 py-1.5 backdrop-blur-md">
+            <span className="text-accent text-xs tracking-tight font-bold">★★★★★</span>
+            <span className="text-xs font-semibold text-white">5.0</span>
+            <span className="h-3 w-px bg-white/20" />
+            <span className="text-[11px] text-gray-300">
               Barbearia & Visagismo
             </span>
           </div>
@@ -80,19 +72,19 @@ export default function Hero() {
             </a>
             <a
               href="#reels"
-              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-border-light bg-surface/50 px-8 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:border-accent hover:text-accent active:scale-[0.98]"
+              className="inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-full border border-white/20 bg-black/40 px-8 text-sm font-medium text-foreground backdrop-blur-md transition-all hover:border-accent hover:text-accent active:scale-[0.98]"
             >
               Ver Experiência em Vídeo
             </a>
           </div>
 
-          {/* Destaques Rápidos com Ícones / Métricas */}
-          <div className="mt-8 pt-6 border-t border-border/50 grid grid-cols-3 gap-3 w-full max-w-sm text-center">
+          {/* Destaques Rápidos */}
+          <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-3 gap-3 w-full max-w-sm text-center">
             <div>
               <p className="text-sm font-bold text-accent">1 a 1</p>
               <p className="text-[11px] text-foreground-subtle">Exclusivo</p>
             </div>
-            <div className="border-x border-border/40">
+            <div className="border-x border-white/10">
               <p className="text-sm font-bold text-accent">Visagismo</p>
               <p className="text-[11px] text-foreground-subtle">Consultoria Facial</p>
             </div>
